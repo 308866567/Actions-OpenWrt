@@ -13,8 +13,13 @@
 name: OpenWrt Builder
 
 on:
-  repository_dispatch:
-  workflow_dispatch:
+  repository_dispatch:  # 当收到 repository_dispatch 事件时触发
+  workflow_dispatch:    # 允许手动触发工作流
+    inputs:
+      ssh:
+        description: 'SSH 连接到 Actions'
+        required: false
+        default: 'false'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
